@@ -4,6 +4,8 @@
  * Note that you cannot remove items from the cart (better for business!)
  */
 public class ShoppingCart {
+	private int itemTotal = 0;
+	private double amountOwed = 0;
 	
 	public ShoppingCart() {
 
@@ -16,21 +18,22 @@ public class ShoppingCart {
 	 * @param pricePerItem the price per item being added to the cart
 	 */
 	public void addItems(int numberOfItems, double pricePerItem) {
-
+		itemTotal += numberOfItems;
+		amountOwed += (numberOfItems * pricePerItem);
 	}
 	
 	/**
 	 * @return the total number of items that have been added to this cart
 	 */
 	public int getTotalNumberOfItems() {
-		return 0;
+		return itemTotal;
 	}
 	
 	/**
 	 * @return the total price of all items that have been added to the cart
 	 */
 	public double getTotalAmountOwed() {
-		return 0;
+		return amountOwed;
 	}
 	
 	/**
@@ -40,6 +43,12 @@ public class ShoppingCart {
 	 * @return the average price of items added to the cart
 	 */
 	public double getAveragePricePerItem() {
-		return 0;
+		double averagePrice;
+		if (itemTotal > 0) {
+		averagePrice = amountOwed / itemTotal;
+		} else {
+			averagePrice = 0;
+		}
+		return averagePrice;
 	}
 }
